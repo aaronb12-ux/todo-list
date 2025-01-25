@@ -4,14 +4,10 @@ import AddEntry from "./components/AddEntry.jsx";
 import FilterButton from "./components/FilterButton.jsx";
 import ShowTasks from "./components/ShowTasks.jsx";
 
-function App() {
+function ToDoList() {
 
     const [isformVisible, setIsformVisible] = useState(false);
     const [tasks, setTasks] = useState([])
-
-
-
-    
 
     return (
         <div className="bg-slate-100 h-screen">
@@ -35,6 +31,7 @@ function App() {
 
             <ShowTasks
                 tasks={tasks}
+                setTasks={setTasks}
             />
         </div>
 
@@ -42,4 +39,4 @@ function App() {
 
 }
 
-export default App
+export default ToDoList
