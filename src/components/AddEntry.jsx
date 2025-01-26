@@ -24,7 +24,7 @@ function AddEntry({isformVisible, tasks, setTasks}) {
                     <form className="bg-white shadow-md rounded">
                         <label className="block text-gray-700 text-sm font-bold" >
                             <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-right
-                                focus:shadow-outline"
+                                focus:outline-none"
                                 name="myInput"
                                 value={inputfield}
                                 onChange={(e) => setInputfield(e.target.value)}

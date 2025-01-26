@@ -6,7 +6,7 @@ function AddTaskButton({setIsformVisible}) {
         setIsformVisible(true);
     }
     return(
-        <button onClick={handleclick} className="bg-indigo-500 hover:bg-indigo-600 text-white pl-3 pr-3 pt-2 pb-2 rounded font-bold mt-5 mr-[49.5%] mb-3 inline-block">
+        <button onClick={handleclick} className="bg-indigo-500 hover:bg-indigo-600 text-white pl-3 pr-3 pt-2 pb-2 rounded font-bold mt-5 mr-[30.5%] mb-3 inline-block">
             Add Task
         </button>
         )
