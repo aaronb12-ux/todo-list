@@ -2,6 +2,8 @@ import {useState} from "react";
 
 function AddEntry({isformVisible, tasks, setTasks}) {
 
+    const [current_input_field, setCurrent_input_field] = useState("");
+
 
     const handleInput = (value) => {
        //create an object. The object has 3 characteristics: id, task itself, and completion status
@@ -14,7 +16,6 @@ function AddEntry({isformVisible, tasks, setTasks}) {
         setTasks([...tasks, current_task]);
     }
 
-    const [inputfield, setInputfield] = useState('')
 
     if(isformVisible)
     {
@@ -26,15 +27,15 @@ function AddEntry({isformVisible, tasks, setTasks}) {
                             <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-right
                                 focus:outline-none"
                                 name="myInput"
-                                value={inputfield}
-                                onChange={(e) => setInputfield(e.target.value)}
+                                value={current_input_field}
+                                onChange={(e) => setCurrent_input_field(e.target.value)}
                             />
                         </label>
                     </form>
                 </div>
 
                 <div className="flex justify-center items-center">
-                     <button className="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded"   onClick={() => handleInput(inputfield)}> Add</button>
+                     <button className="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded"   onClick={() => handleInput(current_input_field)}> Add</button>
                 </div>
             </div>
         )
