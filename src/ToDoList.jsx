@@ -8,7 +8,8 @@ function ToDoList() {
 
     const [isformVisible, setIsformVisible] = useState(false);
     const [tasks, setTasks] = useState([])
-    const [inputfield, setInputfield] = useState('')
+
+    console.log(tasks)
 
     return (
         <div className="bg-slate-100 h-screen">
@@ -33,8 +34,7 @@ function ToDoList() {
             <ShowTasks
                 tasks={tasks}
                 setTasks={setTasks}
-                inputfield={inputfield}
-                setInputfield={setInputfield}
+
             />
         </div>
 
