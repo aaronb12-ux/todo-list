@@ -30,7 +30,7 @@ function AddEntry({isformVisible, setIsformVisible, tasks, setTasks}) {
             date: date_made,
             priority_number: priority,
         }
-        setTasks([...tasks, current_task]);
+        setTasks([...tasks, current_task].sort((a, b) => b.id - a.id));
         setIsformVisible(false);
         setCurrent_input_field("");
         setCurrent_priority("");
@@ -75,7 +75,7 @@ function AddEntry({isformVisible, setIsformVisible, tasks, setTasks}) {
                                     value="low"
                                     onClick={() => setCurrent_priority("1")}
                                 />
-                                <label className="ml-1" htmlFor="low">low </label>
+                                <label className="ml-1" htmlFor="low">Low </label>
                             </div>
                             <div>
                                 <input
@@ -85,7 +85,7 @@ function AddEntry({isformVisible, setIsformVisible, tasks, setTasks}) {
                                     value="medium"
                                     onClick={() => setCurrent_priority("2")}
                                 />
-                                <label className="ml-1" htmlFor="medium">medium</label>
+                                <label className="ml-1" htmlFor="medium">Medium</label>
                             </div>
                             <div>
 
@@ -97,7 +97,7 @@ function AddEntry({isformVisible, setIsformVisible, tasks, setTasks}) {
 
                                     onClick={() => setCurrent_priority("3")}
                                 />
-                                <label className="ml-1" htmlFor="high">high</label>
+                                <label className="ml-1" htmlFor="high">High</label>
                             </div>
                         </label>
                     </div>

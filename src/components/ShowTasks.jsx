@@ -102,7 +102,7 @@ function ShowTasks({tasks, setTasks}) {
                                             onClick={() => priority_change("1")}
 
                                         />
-                                        <label className="ml-1" htmlFor="low">low </label>
+                                        <label className="ml-1" htmlFor="low">Low </label>
                                         </div>
 
                                         <div className="inline text-blue-600 font-bold text-2xl">
@@ -115,7 +115,7 @@ function ShowTasks({tasks, setTasks}) {
                                             onClick={() => priority_change("2")}
 
                                         />
-                                        <label className="ml-1" htmlFor="medium">medium </label>
+                                        <label className="ml-1" htmlFor="medium">Medium </label>
                                         </div>
                                         <div className="inline text-blue-600 font-bold text-2xl">
                                         <input
@@ -126,7 +126,7 @@ function ShowTasks({tasks, setTasks}) {
                                             value="high"
                                             onClick={() => priority_change("3")}
                                         />
-                                        <label className="ml-1" htmlFor="high">high </label>
+                                        <label className="ml-1" htmlFor="high">High </label>
                                     </div>
                                     </div>
                                     : <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-right

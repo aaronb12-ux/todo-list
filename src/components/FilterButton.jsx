@@ -4,15 +4,16 @@ function FilterButton({tasks, setTasks})
 {
 
     const [showdropdown, setShowdropdown] = useState(false);
-
+    const [current, setCurrent] = useState("Date");
 
     const sortedTasksDate = () => {
         setTasks([...tasks].sort((a, b) => b.id - a.id));
+        setCurrent("Date");
         setShowdropdown(false);
-
     }
     const sortedTasksPriority = () => {
         setTasks([...tasks].sort((a, b) => b.priority_number - a.priority_number));
+        setCurrent("Priority");
         setShowdropdown(false);
     }
 
@@ -32,7 +33,7 @@ function FilterButton({tasks, setTasks})
                 <button
                     onClick={() => {ShowDropDown()}}
                      className="bg-gradient-to-r from-blue-500 to-indigo-600 text-white font-semibold rounded-lg shadow-lg hover:shadow-2xl pl-3 pr-3 pt-2 pb-2 w-24 flex justify-between" >
-                    All
+                    {current}
                     <p>
                         ▼
                     </p>
