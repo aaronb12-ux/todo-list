@@ -3,12 +3,14 @@ import { Pen } from "lucide-react";
 import { Save } from "lucide-react";
 import {useState} from "react";
 import {Edit} from "lucide";
+import Priority from "../components/Priority";
 
 function ShowTasks({tasks, setTasks}) {
 
     const [editTask, setEditTask] = useState('');
     const [inputField, setInputField] = useState("");
     const [selectedField, setSelectedField] = useState("");
+
 
 
     const handleTaskChange = (input, id) =>
@@ -71,7 +73,6 @@ function ShowTasks({tasks, setTasks}) {
 
     const priority_change = (priority_number) => {
         setInputField(priority_number);
-
     }
 
     const handleDelete = (id) =>
@@ -91,43 +92,56 @@ function ShowTasks({tasks, setTasks}) {
                         {editTask === task.id ?
                             <form>
                                 {selectedField === "priority" ?
-                                    <div className="ml-4 mt-7">
-                                        <div className="inline text-blue-600 font-bold text-2xl left-5">
-                                        <input
-                                            className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 "
-                                            type="radio"
-                                            id="low"
-                                            name="priority"
-                                            value="low"
-                                            onClick={() => priority_change("1")}
+                                    <div className="px-8 mt-6">
 
-                                        />
-                                        <label className="ml-1" htmlFor="low">Low </label>
+                                        <div className={"inline"}>
+                                            {inputField === "1" ?
+                                                <button
+                                                    className={"border px-4 p-2 h-11 bg-green-500 font-medium rounded-bl-md rounded-tl-md  text-white "}
+                                                    type="button"
+                                                    onClick={() => priority_change("1")}>
+                                                    Low
+                                                </button> :
+                                                <button
+                                                    className="border px-4 h-11 p-2 bg-white font-medium rounded-bl-md rounded-tl-md "
+                                                    type="button"
+                                                    onClick={() => priority_change("1")}>
+                                                    Low
+                                                </button>
+                                            }
                                         </div>
-
-                                        <div className="inline text-blue-600 font-bold text-2xl">
-                                        <input
-                                            className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 "
-                                            type="radio"
-                                            id="medium"
-                                            name="priority"
-                                            value="medium"
-                                            onClick={() => priority_change("2")}
-
-                                        />
-                                        <label className="ml-1" htmlFor="medium">Medium </label>
+                                        <div className={"inline"}>
+                                            {inputField === "2" ?
+                                                <button
+                                                    className={"border p-2 h-11 bg-yellow-500 font-medium text-white"}
+                                                    type="button"
+                                                    onClick={() => priority_change("2")}>
+                                                    Medium
+                                                </button> :
+                                                <button
+                                                    className="border h-11 p-2 bg-white font-medium"
+                                                    type="button"
+                                                    onClick={() => priority_change("2")}>
+                                                    Medium
+                                                </button>
+                                            }
                                         </div>
-                                        <div className="inline text-blue-600 font-bold text-2xl">
-                                        <input
-                                            className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 "
-                                            type="radio"
-                                            id="high"
-                                            name="priority"
-                                            value="high"
-                                            onClick={() => priority_change("3")}
-                                        />
-                                        <label className="ml-1" htmlFor="high">High </label>
-                                    </div>
+                                        <div className={"inline"}>
+                                            {inputField === "3" ?
+                                                <button
+                                                    className={"border  px-4 h-11 bg-red-500 font-medium rounded-tr-md rounded-br-md text-white mr-2"}
+                                                    type="button"
+                                                    onClick={() => priority_change("3")}>
+                                                    High
+                                                </button> :
+                                                <button
+                                                    className="border px-4 h-11 bg-white font-medium rounded-tr-md rounded-br-md mr-2 "
+                                                    type="button"
+                                                    onClick={() => priority_change("3")}>
+                                                    High
+                                                </button>
+                                            }
+                                        </div>
                                     </div>
                                     : <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-right
                                 focus:outline-none mt-6 font-bold"
@@ -140,7 +154,7 @@ function ShowTasks({tasks, setTasks}) {
                             </form>
 
                             : <div className="pb-6 mt-5 text-2xl font-serif">
-                            {task.text}
+                                {task.text}
                                 <button className="hover:text-blue-700 cursor-pointer ml-2"
                                         onClick={() => handleEdit(task.id, task.text, "text")}>
                                     <Pen size={15}/>
@@ -163,8 +177,9 @@ function ShowTasks({tasks, setTasks}) {
                         }
                         <div>
                             {editTask === task.id ?
-                                <button className="p-2 -bottom-4 mr-3.5 bg-gradient-to-r from-blue-500 to-indigo-600 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 "
-                                        onClick={() => handleTaskChange(inputField, task.id)}>
+                                <button
+                                    className="p-2 -bottom-4 mr-3.5 bg-gradient-to-r from-blue-500 to-indigo-600 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 "
+                                    onClick={() => handleTaskChange(inputField, task.id)}>
                                     Save
                                 </button>
                                 : <button className="hover:text-red-500 cursor-pointer"

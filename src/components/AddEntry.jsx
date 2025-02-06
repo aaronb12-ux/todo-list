@@ -5,6 +5,27 @@ function AddEntry({isformVisible, setIsformVisible, tasks, setTasks}) {
     const [current_priority, setCurrent_priority] = useState("");
     const [date_made, setDate_made] = useState("");
 
+
+
+
+    //depending on the priority, change that buttons color
+
+    const handleButtonClick = (priority) => {
+        switch (priority) {
+            case "1":
+                setCurrent_priority("1");
+
+                break;
+            case "2":
+                setCurrent_priority("2");
+                break;
+            case "3":
+                setCurrent_priority("3");
+                break;
+
+        }
+    }
+
     const handleInput = (value, priority, date_made) => {
 
         let Priority;
@@ -37,6 +58,7 @@ function AddEntry({isformVisible, setIsformVisible, tasks, setTasks}) {
         setDate_made("");
     }
 
+
     if (!isformVisible) return null;
 
     return (
@@ -63,44 +85,61 @@ function AddEntry({isformVisible, setIsformVisible, tasks, setTasks}) {
                     </div>
 
                     <div>
-                        <label className="block text-gray-700 text-sm font-bold mb-2">
-                            Priority
+                        <span className="block text-gray-700 text-sm font-bold mb-2">Priority</span>
+                        <div className="flex justify-center">
                             <div>
-
-                                <input
-                                   className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 "
-                                    type="radio"
-                                    id="low"
-                                    name="priority"
-                                    value="low"
-                                    onClick={() => setCurrent_priority("1")}
-                                />
-                                <label className="ml-1" htmlFor="low">Low </label>
+                                {current_priority === "1" ?
+                                    <button
+                                        className={"border px-4 p-2 h-11 bg-green-500 font-medium rounded-bl-md rounded-tl-md  text-white "}
+                                        type="button"
+                                        onClick={() => handleButtonClick("1")}>
+                                        Low
+                                    </button> :
+                                    <button
+                                        className="border px-4 h-11 p-2 bg-white font-medium rounded-bl-md rounded-tl-md "
+                                        type="button"
+                                        onClick={() => handleButtonClick("1")}>
+                                        Low
+                                    </button>
+                                }
                             </div>
                             <div>
-                                <input
-                                    type="radio"
-                                    id="medium"
-                                    name="priority"
-                                    value="medium"
-                                    onClick={() => setCurrent_priority("2")}
-                                />
-                                <label className="ml-1" htmlFor="medium">Medium</label>
+                                {current_priority === "2" ?
+                                    <button
+                                        className={"border p-2 h-11 bg-yellow-500 font-medium text-white"}
+                                        type="button"
+                                        onClick={() => handleButtonClick("2")}>
+                                        Medium
+                                    </button> :
+                                    <button
+                                        className="border h-11 p-2 bg-white font-medium"
+                                        type="button"
+                                        onClick={() => handleButtonClick("2")}>
+                                        Medium
+                                    </button>
+                                }
                             </div>
                             <div>
-
-                                <input
-                                    type="radio"
-                                    id="high"
-                                    name="priority"
-                                    value="high"
-
-                                    onClick={() => setCurrent_priority("3")}
-                                />
-                                <label className="ml-1" htmlFor="high">High</label>
+                                {current_priority === "3" ?
+                                    <button
+                                        className={"border  px-4 h-11 bg-red-500 font-medium rounded-tr-md rounded-br-md text-white mr-2"}
+                                        type="button"
+                                        onClick={() => handleButtonClick("3")}>
+                                        High
+                                    </button> :
+                                    <button
+                                        className="border px-4 h-11 bg-white font-medium rounded-tr-md rounded-br-md mr-2 "
+                                        type="button"
+                                        onClick={() => handleButtonClick("3")}>
+                                        High
+                                    </button>
+                                }
                             </div>
-                        </label>
+
+                        </div>
                     </div>
+
+
                     <div>
                         <label className="block text-gray-700 text-sm font-bold mb-2 mt-1">
                             Date
@@ -116,10 +155,15 @@ function AddEntry({isformVisible, setIsformVisible, tasks, setTasks}) {
 
                     {/* Buttons */}
                     <div className="flex justify-end space-x-4 mt-6">
-                        <button
+                    <button
                             type="button"
                             className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded"
-                            onClick={() => setIsformVisible(false)}
+                            onClick={() => {
+                                setIsformVisible(false);
+                                setCurrent_priority("");
+                                setCurrent_input_field("");
+                                setDate_made("");
+                            }}
                         >
                             Cancel
                         </button>
